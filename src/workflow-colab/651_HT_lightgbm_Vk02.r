@@ -58,11 +58,11 @@ PARAM$lgb_basicos <- list(
    max_bin= 31L,                   #lo debo dejar fijo, no participa de la BO
    num_iterations= 9999,           #un numero muy grande, lo limita early_stopping_rounds
 
-   bagging_fraction= 0.8,          # 0.0 < bagging_fraction <= 1.0
-   pos_bagging_fraction= 0.015,    # 0.0 < pos_bagging_fraction <= 1.0
-   neg_bagging_fraction= 0.985,    # 0.0 < neg_bagging_fraction <= 1.0
+   bagging_fraction= 1.0,          # 0.0 < bagging_fraction <= 1.0
+   pos_bagging_fraction= 1.0,    # 0.0 < pos_bagging_fraction <= 1.0
+   neg_bagging_fraction= 1.0,    # 0.0 < neg_bagging_fraction <= 1.0
    is_unbalance=  FALSE,           #
-   scale_pos_weight= 1.0,          # scale_pos_weight > 0.0
+   scale_pos_weight= 10.18,        # scale_pos_weight > 0.0
 
    drop_rate=  0.1,                # 0.0 < neg_bagging_fraction <= 1.0
    max_drop= 50,                   # <=0 means no limit
