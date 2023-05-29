@@ -31,7 +31,7 @@ options(error = function() {
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento  <- "HT6510VEK02" #cambiar cada vez que se corra el modelo
+PARAM$experimento  <- "HT6510VEKB" #cambiar cada vez que se corra el modelo
 
 PARAM$exp_input  <- "TS6410vk"
 
@@ -62,7 +62,7 @@ PARAM$lgb_basicos <- list(
    pos_bagging_fraction= 1.0,      # 0.0 < pos_bagging_fraction <= 1.0
    neg_bagging_fraction= 1.0,      # 0.0 < neg_bagging_fraction <= 1.0
    is_unbalance=  FALSE,           #
-   #scale_pos_weight= 1.0,        # scale_pos_weight > 0.0
+   scale_pos_weight= 1.0,        # scale_pos_weight > 0.0
 
    drop_rate=  0.1,                # 0.0 < neg_bagging_fraction <= 1.0
    max_drop= 50,                   # <=0 means no limit
@@ -84,7 +84,7 @@ PARAM$bo_lgb <- makeParamSet(
          #makeNumericParam("bagging_fraction",     lower= 0.0, upper= 1.0),    # 0.0 < bagging_fraction <= 1.0
          #makeNumericParam("pos_bagging_fraction", lower= 0.0, upper= 1.0),   # 0.0 < pos_bagging_fraction <= 1.0
          #makeNumericParam("neg_bagging_fraction", lower= 0.0, upper= 1.0),     # 0.0 < neg_bagging_fraction <= 1.0
-         makeIntegerParam("scale_pos_weight",     lower= 1,  upper= 40)      # scale_pos_weight > 0.0
+         #makeIntegerParam("scale_pos_weight",     lower= 1,  upper= 40)      # scale_pos_weight > 0.0
 
         )
 
