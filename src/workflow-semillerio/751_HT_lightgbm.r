@@ -31,13 +31,13 @@ options(error = function() {
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento  <- "HT6510VEK00" #cambiar cada vez que se corra el modelo
+PARAM$experimento  <- "HT7510"
 
-PARAM$exp_input  <- "TS6410vk"
+PARAM$exp_input  <- "TS7410"
 
 PARAM$lgb_crossvalidation_folds  <- 5  #En caso que se haga cross validation, se usa esta cantidad de folds
 
-PARAM$lgb_semilla  <- PARAM$train$semilla  <- 100559   #cambiar por su propia semilla
+PARAM$lgb_semilla  <- 100559   #cambiar por su propia semilla
 
 
 #Hiperparametros FIJOS de  lightgbm
@@ -58,11 +58,11 @@ PARAM$lgb_basicos <- list(
    max_bin= 31L,                   #lo debo dejar fijo, no participa de la BO
    num_iterations= 9999,           #un numero muy grande, lo limita early_stopping_rounds
 
-   #bagging_fraction= 1.0,          # 0.0 < bagging_fraction <= 1.0
-   #pos_bagging_fraction= 1.0,      # 0.0 < pos_bagging_fraction <= 1.0
-   #neg_bagging_fraction= 1.0,      # 0.0 < neg_bagging_fraction <= 1.0
+   bagging_fraction= 1.0,          # 0.0 < bagging_fraction <= 1.0
+   pos_bagging_fraction= 1.0,      # 0.0 < pos_bagging_fraction <= 1.0
+   neg_bagging_fraction= 1.0,      # 0.0 < neg_bagging_fraction <= 1.0
    is_unbalance=  FALSE,           #
-   #scale_pos_weight= 1.0,        # scale_pos_weight > 0.0
+   scale_pos_weight= 1.0,          # scale_pos_weight > 0.0
 
    drop_rate=  0.1,                # 0.0 < neg_bagging_fraction <= 1.0
    max_drop= 50,                   # <=0 means no limit
@@ -79,13 +79,7 @@ PARAM$bo_lgb <- makeParamSet(
          makeNumericParam("learning_rate",    lower=    0.02, upper=     0.3),
          makeNumericParam("feature_fraction", lower=    0.01, upper=     1.0),
          makeIntegerParam("num_leaves",       lower=    8L,   upper=  1024L),
-         makeIntegerParam("min_data_in_leaf", lower=  100L,   upper= 50000L),
-         
-         makeNumericParam("bagging_fraction",     lower= 0.0, upper= 1.0),    # 0.0 < bagging_fraction <= 1.0
-         makeNumericParam("pos_bagging_fraction", lower= 0.0, upper= 1.0),   # 0.0 < pos_bagging_fraction <= 1.0
-         makeNumericParam("neg_bagging_fraction", lower= 0.0, upper= 1.0),     # 0.0 < neg_bagging_fraction <= 1.0
-         makeIntegerParam("scale_pos_weight",     lower= 0,  upper= 50)      # scale_pos_weight > 0.0
-
+         makeIntegerParam("min_data_in_leaf", lower=  100L,   upper= 50000L)
         )
 
 
